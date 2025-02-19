@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+    <script>
+        window.onload = function() {
+            const params = new URLSearchParams(window.location.search);
+            const target = params.get('target');
+
+            const urls = {
+                "1": "http://121.37.162.102:6379/ViewerFrame?Mode=Refresh&Language=1",
+                "2": "http://velospeer.spdns.org/view/view.shtml?videos=&size=4",
+                "3": "http://lemanplongee.dyndns.org:5051/?id=590&imagepath=%2Fmjpg%2Fvideo.mjpg%3Fcamera%3D1&size=1#view",
+                "4": "http://192.168.1.4",
+                "5": "http://192.168.1.5",
+                "6": "http://192.168.1.6",
+                "7": "http://192.168.1.7",
+                "8": "http://192.168.1.8",
+                "9": "http://192.168.1.9",
+                "10": "http://192.168.1.10"
+            };
+
+            if (target in urls) {
+                const randomString = Math.random().toString(36).substr(2, 8); // Generate a random string
+                const maskedURL = `${urls[target]}?id=${randomString}`;
+                window.location.replace(maskedURL);
+            } else {
+                document.body.innerHTML = "<h2>Invalid target</h2>";
+            }
+        };
+    </script>
+</head>
+<body>
+    <h2>Redirecting...</h2>
+</body>
+</html>
